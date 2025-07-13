@@ -1,0 +1,29 @@
+{
+  "configurations": [
+    {
+      "browse": {
+        "databaseFilename": "${default}",
+        "limitSymbolsToIncludedHeaders": false
+      },
+      "includePath": [
+        "/home/sh/dawon_ws/install/cyglidar_d1_ros2/include/**",
+        "/home/sh/nav2_ws/install/turtlebot3_msgs/include/**",
+        "/home/sh/nav2_ws/install/turtlebot3_gazebo/include/**",
+        "/home/sh/nav2_ws/install/serial/include/**",
+        "/home/sh/nav2_ws/install/openslam_gmapping/include/**",
+        "/home/sh/nav2_ws/install/neo_msgs2/include/**",
+        "/home/sh/nav2_ws/install/neo_localization2/include/**",
+        "/home/sh/nav2_ws/install/neo_local_planner2/include/**",
+        "/home/sh/nav2_ws/install/cyglidar_d1_ros2/include/**",
+        "/opt/ros/humble/include/**",
+        "/usr/include/**"
+      ],
+      "name": "ROS",
+      "intelliSenseMode": "gcc-x64",
+      "compilerPath": "/usr/bin/gcc",
+      "cStandard": "gnu11",
+      "cppStandard": "c++14"
+    }
+  ],
+  "version": 4
+}

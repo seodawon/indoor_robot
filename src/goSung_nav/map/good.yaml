@@ -1,0 +1,7 @@
+image: good.pgm
+mode: trinary
+resolution: 0.05  #0.05
+origin: [-11.284418106079102, -62.14369583129883, 0.0]  # 회전 값 적용
+negate: 0
+occupied_thresh: 0.65
+free_thresh: 0.25
