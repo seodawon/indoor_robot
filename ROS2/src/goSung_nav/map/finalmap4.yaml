@@ -1,0 +1,7 @@
+image: finalmap4.pgm
+mode: trinary
+resolution: 0.05
+origin: [-1.4926464557647705, -6.809471130371094, 0]
+negate: 0
+occupied_thresh: 0.65
+free_thresh: 0.25
