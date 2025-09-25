@@ -28,4 +28,51 @@
 
 ## 🚀 전체 실행 순서
 ```bash
-# (추후 실행 코드 추가 예정)
+# bringup.sh
+#!/bin/bash
+echo "bringup.sh"
+
+# 2D LiDAR 실행 파일
+taskset -c 0 ros2 launch ydlidar_ros2_driver ydlidar_launch.py use_sim_time:=true &
+
+# IMU 실행
+ros2 topic pub -r 10 /imu sensor_msgs/Imu '{orientation: {x: 0.0, y: 0.0, z: -0.7071, w: 0.7071}, angular_velocity: {x: 0.0, y: 0.0, z: 0.0}, linear_acceleration: {x: 0.0, y: 0.0, z: 0.0}}' &
+
+# 3D LiDAR (옵션)
+# taskset -c 1,2,3 ros2 launch cyglidar_d1_ros2 cyglidar.launch.py use_sim_time:=true &
+
+# 카메라 실행 (옵션)
+# taskset -c 2,3 ros2 launch realsense2_camera rs_launch.py depth_module.profile:=1280x720x30 pointcloud.enable:=true serial_no:="'231522072849'" &
+
+# TF 및 /cmd_vel 발행
+taskset -c 4 ros2 launch my_tf_ros2_test_pkg tf_start.launch.py
+
+wait
+```
+```bash
+# camera.sh
+#!/bin/bash
+echo "camera.sh"
+
+# Camera 실행
+taskset -c 8,9,10,11 ros2 launch yolov5 sensor_fusion.launch.py &
+
+# Localization, IMU, Press 실행
+taskset -c 7 ros2 run yolov5 localization
+
+wait
+```
+```bash
+# follow.sh
+#!/bin/bash
+echo "follow.sh"
+
+# Follow waypoints 실행
+taskset -c 12 ros2 run my_tf_ros2_test_pkg follow_waypoints &
+
+# base_link 좌표 DB publish 실행
+taskset -c 12 ros2 run my_tf_ros2_test_pkg base_link_publisher
+
+wait
+```
+
